@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack server --mode development --open --hot",
+    "server:build": "cross-env NODE_ENV=development webpack --mode development",
+    "server:start": "cross-env NODE_ENV=development nodemon server.js",
     "build": "cross-env NODE_ENV=production webpack --mode production",
     "build:grid": "node smart-grid.js && sass-migrator division src/**/*.scss"
   },
@@ -24,6 +26,12 @@
     "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
-    "scss-coding-helpers": "^1.0.1"
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.16",
+    "react-redux": "^8.0.2",
+    "react-router-dom": "^5.3.1",
+    "scss-coding-helpers": "^1.0.1",
+    "serialize-javascript": "^6.0.0"
   }
 }
