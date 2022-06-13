@@ -1,0 +1,29 @@
+{
+  "name": "webpack-config-layout",
+  "version": "1.0.0",
+  "description": "default webpack layout",
+  "main": "index.js",
+  "scripts": {
+    "start": "cross-env NODE_ENV=development webpack server --mode development --open --hot",
+    "build": "cross-env NODE_ENV=production webpack --mode production",
+    "build:grid": "node smart-grid.js && sass-migrator division src/**/*.scss"
+  },
+  "author": "webster6667",
+  "license": "MIT",
+  "browserslist": "> 0.25%, not dead",
+  "devDependencies": {
+    "@babel/polyfill": "^7.12.1",
+    "cross-env": "^7.0.3",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "sass-migrator": "^1.5.2",
+    "smart-grid": "^2.1.2",
+    "webpack": "^5.50.0",
+    "webpack-cli": "^4.8.0",
+    "webpack-config-create-utils": "^1.0.2",
+    "webpack-dev-server": "^3.11.2"
+  },
+  "dependencies": {
+    "scss-coding-helpers": "^1.0.1"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "jsx": "react",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "paths": {
+      "@src/*": ["src/*"],
+      "@common-img/*": ["src/common/img/*"],
+      "@common-style/*": ["src/common/style/*"]
+    }
+  },
+  "include": [
+    "src/**/*",
+    "custom.d.ts"
+  ],
+  "exclude": ["node_modules", "build"]
+}
