@@ -8,7 +8,9 @@ const path = require('path'),
 		getScriptRules,
 		getFileRules,
 		getAliasFromFile
-	  } = require('webpack-config-create-utils')()
+	  } = require('webpack-config-create-utils')(),
+	  AssetsPlugin = require('assets-webpack-plugin')
+
 
 
 
@@ -62,12 +64,38 @@ const {
 // 	}
 // }
 
+const clientsConfig = {
+	mode: 'development',
+	name: 'client',
+	entry: {
+		server: ['@babel/polyfill', './src/client/index.tsx']
+	},
+	output: {
+		path: __dirname,
+		filename: '[name].js'
+	},
+	resolve: {
+		extensions,
+		alias
+	},
+	plugins: [
+		new AssetsPlugin({filename: 'assets.json', fileTypes: ['js', 'css']}),
+	],
+	module: {
+		rules: [
+			...styleRules,
+			scriptRules,
+			...fileRules
+		]
+	}
+}
+
 const serverConfig = {
 	target: 'node',
 	mode: 'development',
 	name: 'server',
 	entry: {
-		server: './src/server/index.tsx',
+		server: ['@babel/polyfill', './src/server/index.tsx']
 	},
 	output: {
 		path: __dirname,
@@ -84,7 +112,7 @@ const serverConfig = {
 			scriptRules,
             ...fileRules
 		]
-	},
+	}
 }
 
-module.exports = [serverConfig]
+module.exports = [serverConfig, clientsConfig]

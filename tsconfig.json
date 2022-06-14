@@ -5,10 +5,13 @@
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "paths": {
-      "@app": ["src/shared/app.tsx"],
-      "@src/*": ["src/*"],
-      "@common-img/*": ["src/common/img/*"],
-      "@common-style/*": ["src/common/style/*"]
+      "@app": ["src/shared/app"],
+      "@pages": ["src/shared/pages"],
+
+      "@store": ["src/shared/store"],
+      "@api": ["src/shared/modules/api"],
+      "@shared-types": ["src/shared/types"],
+      "@routes": ["src/shared/routes.ts"]
     }
   },
   "include": [
