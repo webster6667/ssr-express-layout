@@ -9,7 +9,7 @@ const path = require('path'),
 		getFileRules,
 		getAliasFromFile
 	  } = require('webpack-config-create-utils')(),
-	  AssetsPlugin = require('assets-webpack-plugin')
+	  MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 
 
@@ -23,13 +23,12 @@ const {
 	} = getBuildMode(),
     extensions = getResolveExtensions(),
     alias = getAliasFromFile(__dirname),
-    defaultPlugins = getDefaultPlugins({isProd}),
     fileRules = getFileRules(),
 
 	styleRules = getStyleRules({
 		sassFilesForImport: [
-			getFileRelativeConfigFile('src/common/style/smart-grid.scss'),
-			getFileRelativeConfigFile('node_modules/scss-coding-helpers/index.scss')
+			// getFileRelativeConfigFile('src/common/style/smart-grid.scss'),
+			// getFileRelativeConfigFile('node_modules/scss-coding-helpers/index.scss')
 		]
 	}),
 	scriptRules = getScriptRules()
@@ -72,14 +71,16 @@ const clientsConfig = {
 	},
 	output: {
 		path: __dirname,
-		filename: '[name].js'
+		filename: 'public/client.js'
 	},
 	resolve: {
 		extensions,
 		alias
 	},
 	plugins: [
-		new AssetsPlugin({filename: 'assets.json', fileTypes: ['js', 'css']}),
+		new MiniCssExtractPlugin({
+			filename: "public/styles.css",
+		})
 	],
 	module: {
 		rules: [
@@ -99,13 +100,18 @@ const serverConfig = {
 	},
 	output: {
 		path: __dirname,
-		filename: '[name].js',
+		filename: 'server.js',
 		libraryTarget: 'commonjs2',
 	},
 	resolve: {
 		extensions,
 		alias
 	},
+	plugins: [
+		new MiniCssExtractPlugin({
+			filename: "public/styles.css",
+		})
+	],
 	module: {
 		rules: [
 			...styleRules,
@@ -115,4 +121,4 @@ const serverConfig = {
 	}
 }
 
-module.exports = [serverConfig, clientsConfig]
+module.exports = [clientsConfig, serverConfig]

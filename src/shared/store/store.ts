@@ -1,8 +1,9 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
-import {ProfileReducer as profile} from "./reducers"
+import {profileReducer, usersReducer} from "./reducers"
 
 const rootReducer = combineReducers({
-  profile
+  profileReducer,
+  usersReducer
 })
 
 export const createStore = (preloadedState?) => {

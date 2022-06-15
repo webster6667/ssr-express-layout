@@ -9,9 +9,14 @@
       "@pages": ["src/shared/pages"],
 
       "@store": ["src/shared/store"],
+      "@reducers": ["src/shared/store/reducers"],
+      "@actions": ["src/shared/store/actions"],
+
       "@api": ["src/shared/modules/api"],
       "@shared-types": ["src/shared/types"],
-      "@routes": ["src/shared/routes.ts"]
+      "@routes": ["src/shared/routes.ts"],
+
+      "@icons/*": ["src/shared/assets/img/icon/*"]
     }
   },
   "include": [

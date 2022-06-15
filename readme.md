@@ -3,3 +3,9 @@ https://medium.com/deutsche-telekom-gurgaon/react-setup-with-typescript-webpack-
 https://www.npmjs.com/package/assets-webpack-plugin
 
 https://habr.com/ru/post/524260/
+
+Осталось доделать fetch
+
+<body>
+    <div id="root" >${markup}</div> // не должно быть пробелов внутри <div id="root" > 
+</body>

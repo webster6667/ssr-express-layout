@@ -22,5 +22,5 @@ export const profileSlice = createSlice({
     },
 })
 
-export const ProfileActionCreators = profileSlice.actions
-export const ProfileReducer = profileSlice.reducer
+export const profileActionCreators = profileSlice.actions
+export const profileReducer = profileSlice.reducer

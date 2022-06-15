@@ -1,15 +1,40 @@
 import React, { Component } from "react";
-import {fetchUsers} from "@api"
+import { Link } from 'react-router-dom'
+import { connect } from "react-redux";
+import {fetchUsers} from "@actions"
+//@ts-ignore
+import AvatarPath from "@icons/user_1.svg";
+import "./styles.scss"
 
-export class Main extends Component {
+class Main extends Component {
 
-    // static initialAction() {
-    //     return fetchUsers();
-    // }
+    static getInitialProps() {
+        return fetchUsers();
+    }
+
+    componentDidMount() {
+        if (!this.props.users.length) {
+            this.props.dispatch(Main.getInitialProps());
+        }
+    }
 
     render() {
-        return <div>
+        const {users = []} = this.props
+
+        return <div className='main' >
             Главная
+            <img src={AvatarPath} alt="123"/>
+            <Link to='/profile' >Профиль</Link>
+            {users.map(({title}) => <h1>
+                {title}
+            </h1>)}
+
         </div>;
     }
 }
+
+const mapStateToProps = ({usersReducer}) => ({
+    ...usersReducer
+});
+
+export default connect(mapStateToProps)(Main);
