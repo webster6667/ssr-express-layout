@@ -16,7 +16,11 @@
       "@shared-types": ["src/shared/types"],
       "@routes": ["src/shared/routes.ts"],
 
-      "@icons/*": ["src/shared/assets/img/icon/*"]
+      "@icons/*": ["src/shared/assets/img/icon/*"],
+
+      "@components/*": ["src/shared/components/*"],
+      "@grid": ["src/shared/components/grid"]
+
     }
   },
   "include": [

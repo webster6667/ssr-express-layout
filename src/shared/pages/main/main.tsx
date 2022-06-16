@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { Link } from 'react-router-dom'
 import { connect } from "react-redux";
 import {fetchUsers} from "@actions"
-//@ts-ignore
-import AvatarPath from "@icons/user_1.svg";
+import {Row, Container} from "@grid"
+import {Card1 as User} from "@components/cards"
 import "./styles.scss"
 
 class Main extends Component {
@@ -21,14 +21,12 @@ class Main extends Component {
     render() {
         const {users = []} = this.props
 
-        return <div className='main' >
-            Главная
-            <img src={AvatarPath} alt="123"/>
-            <Link to='/profile' >Профиль</Link>
-            {users.map(({title}) => <h1>
-                {title}
-            </h1>)}
-
+        return <div>
+            <Container>
+                <Row>
+                    {users.map(({title, id}) => <User {...{title}} key={id} />)}
+                </Row>
+            </Container>
         </div>;
     }
 }
