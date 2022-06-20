@@ -1,7 +1,6 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import {AuthDataPayloadI} from './types'
+import { createSlice } from '@reduxjs/toolkit'
 
-const initialState = {
+export const usersInitialState = {
     users: [],
     isLoading: false,
     isError: false
@@ -9,7 +8,7 @@ const initialState = {
 
 export const usersSlice = createSlice({
     name: 'users',
-    initialState,
+    initialState: usersInitialState,
     reducers: {
         userFetching(state, action) {
             const {isLoading, isError = false, users = []} = action.payload

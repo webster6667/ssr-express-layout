@@ -1,4 +1,4 @@
-import {Main, Profile} from "@pages";
+import {Main, Profile, Login} from "@pages";
 
 export const routes = [
   {
@@ -8,6 +8,13 @@ export const routes = [
   },
   {
     path: "/profile",
-    component: Profile
+    component: Profile,
+    isLockForGuest: true
+  },
+  {
+    path: "/login",
+    component: Login,
+    isLockForAuth: true,
+    redirectUrl: '/profile'
   }
 ];

@@ -1,1 +1,3 @@
-export * from './profile'
+import Profile from './profile'
+
+export {Profile}

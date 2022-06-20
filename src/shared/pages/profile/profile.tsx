@@ -1,18 +1,27 @@
 import React, { Component } from "react";
-import { Link } from 'react-router-dom'
-import {fetchUsers} from "@api"
-import "./styles.scss"
+import {connect} from "react-redux";
+import {Container} from '@grid'
 
-export class Profile extends Component {
+import {ProfileData, Chat} from './components'
 
-    componentDidUpdate() {
-        console.log('Был апдейт profile');
-    }
+
+import {ProfileI} from './types'
+
+
+class Profile extends Component<ProfileI> {
 
     render() {
-        return <div className='profile'>
-            Профиль
-            <Link to='/' >Главная</Link>
-        </div>;
+        const {username} = this.props
+
+        return <Container>
+            <ProfileData username={username} />
+            <Chat username={username} />
+        </Container>;
     }
 }
+
+const mapStateToProps = ({profileReducer}) => ({
+    ...profileReducer
+});
+
+export default connect(mapStateToProps)(Profile);

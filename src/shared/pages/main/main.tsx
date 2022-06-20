@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import { Link } from 'react-router-dom'
 import { connect } from "react-redux";
 import {fetchUsers} from "@actions"
 import {Row, Container} from "@grid"
 import {Card1 as User} from "@components/cards"
-import "./styles.scss"
 
-class Main extends Component {
+import {MainPagePropsI} from "./types"
+
+class Main extends Component<MainPagePropsI> {
 
     static getInitialProps() {
         return fetchUsers();
@@ -21,13 +21,11 @@ class Main extends Component {
     render() {
         const {users = []} = this.props
 
-        return <div>
-            <Container>
+        return (<Container>
                 <Row>
                     {users.map(({title, id}) => <User {...{title}} key={id} />)}
                 </Row>
-            </Container>
-        </div>;
+            </Container>)
     }
 }
 
