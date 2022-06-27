@@ -17,8 +17,6 @@ export class Socket {
                 case 'connecting':
                     const disconnectTimeoutFn = disconnectFnList[`disconnect${reqData.id}`]
                     
-                    console.log(disconnectFnList, 'дисконект лист при конекте');
-                    
                     if (disconnectTimeoutFn) {
                         clearTimeout(disconnectTimeoutFn)
                     }

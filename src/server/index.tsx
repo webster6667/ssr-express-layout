@@ -13,7 +13,6 @@ import {Socket} from '@modules/socket'
 import {usersInitialState, profileInitialState} from "@reducers"
 import {getCookie} from "@modules/cookie";
 
-
 const app = express(),
       WSServer = expressWs(app),
       aWSS = WSServer.getWss()
@@ -56,7 +55,8 @@ app.get("*", (req, res, next) => {
         // @ts-ignore
         promise = activeRoute?.component?.getInitialProps ? dispatch(activeRoute.component?.getInitialProps()) : Promise.resolve()
 
-  
+
+
     promise.then(() => {
       const context = {};
       const markup = renderToString(
@@ -66,7 +66,6 @@ app.get("*", (req, res, next) => {
           </StaticRouter>
         </Provider>
       );
-
       const initialData = store.getState();
       
       res.send(`
@@ -90,6 +89,9 @@ app.get("*", (req, res, next) => {
     .catch(next);
 });
 
-app.listen(process.env.PORT || 3005, () => {
-  console.log("Server is listening");
+const SERVER_PORT = process.env.PORT || 3005
+
+
+app.listen(SERVER_PORT, () => {
+  console.log(`Server is listening on: ${SERVER_PORT}`);
 });

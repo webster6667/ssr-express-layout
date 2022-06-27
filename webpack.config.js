@@ -1,8 +1,4 @@
-const path = require('path'),
-	  getFileRelativeConfigFile = (filePath) => path.resolve(__dirname, filePath),
-	  {
-	  	getBuildMode,
-		getDefaultPlugins,
+const {
 		getResolveExtensions,
 		getStyleRules,
 		getScriptRules,
@@ -12,56 +8,13 @@ const path = require('path'),
 	  MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 
-
-
-const {
-		isDev,
-		isProd,
-		buildModeByNodeEnv,
-		getFileNameByMode,
-		optimizationSettingsByMode
-	} = getBuildMode(),
-    extensions = getResolveExtensions(),
-    alias = getAliasFromFile(__dirname),
-    fileRules = getFileRules(),
-
-	styleRules = getStyleRules({
-		sassFilesForImport: [
-			// getFileRelativeConfigFile('src/common/style/smart-grid.scss'),
-			// getFileRelativeConfigFile('node_modules/scss-coding-helpers/index.scss')
-		]
-	}),
-	scriptRules = getScriptRules()
-
-
-// module.exports = {
-// 	context: getFileRelativeConfigFile('src'),
-// 	mode: buildModeByNodeEnv,
-// 	devtool: isDev ? 'source-map' : false,
-// 	entry: ['@babel/polyfill', './index.tsx'],
-// 	output: {
-// 		filename: getFileNameByMode('js'),
-// 		path: getFileRelativeConfigFile( 'dist')
-// 	},
-// 	resolve: {
-// 		extensions,
-// 		alias
-// 	},
-// 	optimization: optimizationSettingsByMode,
-// 	devServer: {
-// 		overlay: true
-// 	},
-// 	plugins: [
-// 		...defaultPlugins
-// 	],
-// 	module: {
-// 		rules: [
-// 			...styleRules,
-// 			scriptRules,
-//             ...fileRules
-// 		]
-// 	}
-// }
+const extensions = getResolveExtensions(),
+      alias = getAliasFromFile(__dirname),
+      fileRules = getFileRules(),
+	  styleRules = getStyleRules({
+			sassFilesForImport: []
+	  }),
+	  scriptRules = getScriptRules()
 
 const clientsConfig = {
 	mode: 'development',
